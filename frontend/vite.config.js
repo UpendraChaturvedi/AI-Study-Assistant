@@ -1,0 +1,23 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { crx } from '@crxjs/vite-plugin';
+import manifest from './src/manifest.json';
+
+// Vite configuration for Chrome Extension (Manifest V3) using CRXJS
+export default defineConfig({
+  plugins: [
+    react(),
+    crx({ manifest }),
+  ],
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+  },
+  server: {
+    port: 5173,
+    strictPort: true,
+    hmr: {
+      port: 5173,
+    },
+  },
+});
